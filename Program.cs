@@ -21,9 +21,9 @@ namespace GuessTheNumberGame
 
 
 
-
-            // disallow the typing of that character;
-            // Add option to add range of gameNumber || Add option to add player amount;
+           
+            // disallow the typing of that character; - DONE!
+            // Add option to add range of gameNumber || Add option to add player amount; 
             // Add Single player game. its will little bit hard if i will try to create AI. So mb i will make random number pick
             while (hadwin == false)
             {
@@ -34,18 +34,27 @@ namespace GuessTheNumberGame
                 playerName1 = Console.ReadLine();
                 Console.WriteLine("Enter name of player 2: ");
                 playerName2 = Console.ReadLine();
-
+                
                 for (int gameNumber = rand.Next(12, 120); gameNumber != 0; gameNumber -= enterNumber)
                 {
 
                     gameNumber += enterNumber;
+                    
                     do
                     {
 
                         MovePlayer1 = true;
 
                         Console.Write($"Move {playerName1}: ");
-                        enterNumber = Convert.ToInt32(Console.ReadLine());
+
+                        try
+                        {
+                            enterNumber = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Your enter wrong symbol ");
+                        }
                         if (enterNumber < 1 || enterNumber > 4)
                         {
                             Console.WriteLine("Enter a valid value");
@@ -84,7 +93,14 @@ namespace GuessTheNumberGame
                         MovePlayer1 = false;
 
                         Console.Write($"Move {playerName2}: ");
-                        enterNumber = Convert.ToInt32(Console.ReadLine());
+                        try
+                        {
+                            enterNumber = Convert.ToInt32(Console.ReadLine());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Your enter wrong symbol ");
+                        }
                         if (enterNumber < 1 || enterNumber > 4)
                         {
                             Console.WriteLine("Enter a valid value");
